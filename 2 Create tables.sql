@@ -65,7 +65,7 @@ CREATE TABLE tags
 -- при удалении комнаты триггер удаляет связанные с ней записи
 CREATE TABLE room_tag
 (
-    room_id 		UUID NOT NULL,
+    room_id 		        UUID NOT NULL,
     tag_id 			int NOT NULL,
 	
     CONSTRAINT room_tag_pk 		PRIMARY KEY (room_id, tag_id),
@@ -78,11 +78,11 @@ CREATE TABLE room_tag
 -- (разделил данные пользователя для аутентификации и данные профиля)
 CREATE TABLE users
 (	
-	id 					UUID DEFAULT gen_random_uuid(),	
+	id 				UUID DEFAULT gen_random_uuid(),	
 	username			varchar (50) UNIQUE NOT NULL,
 	email				varchar (200) UNIQUE NOT NULL, 
 	password 			varchar NOT NULL,
-	refresh_token		varchar,
+	refresh_token		        varchar,
 	
 	CONSTRAINT users_pk PRIMARY KEY (id)
 );
