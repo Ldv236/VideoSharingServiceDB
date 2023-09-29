@@ -55,3 +55,6 @@ select * from public.general_chat;
 select * from public.direct_messages;
 select * from public.url_history;
 стандартная таблица истории флайвей на всякий случай
+
+![image](https://github.com/Ldv236/VideoSharingServiceDB/assets/124390764/abb1a9c4-5418-4cf2-af97-88d2de84755b)
+
