@@ -23,9 +23,9 @@ pif.name as invite_friendship, pir.name as invite_room, pvp.name as view_profile
 birthday, users.email, is_online, status, is_block, image 
 
 FROM profiles
-left join users 		on users.id = profiles.id
-left join friends 		on profiles.id in (friends.initiator_id, friends.acceptor_id) and (friends.is_accepted = true)
-left join room_user		on profiles.id = room_user.user_id
+left join users 		    on users.id = profiles.id
+left join friends 		  on profiles.id in (friends.initiator_id, friends.acceptor_id) and (friends.is_accepted = true)
+left join room_user		 on profiles.id = room_user.user_id
 join permissions pif 	on pif.id = profiles.permit_invite_friendship
 join permissions pir 	on pir.id = profiles.permit_invite_room
 join permissions pvp 	on pvp.id = profiles.permit_view_profile
@@ -48,9 +48,9 @@ count(room_invites.acceptor_id) as room_invite,
 count(direct_messages.is_read = false) as new_message
 
 FROM profiles
-join users 					on profiles.id = users.id
-left join friends 			on profiles.id = friends.acceptor_id and (friends.is_accepted = false)
-left join room_invites 		on room_invites.acceptor_id = profiles.id
+join users 					           on profiles.id = users.id
+left join friends 			      on profiles.id = friends.acceptor_id and (friends.is_accepted = false)
+left join room_invites 		  on room_invites.acceptor_id = profiles.id
 left join direct_messages 	on direct_messages.acceptor_id = profiles.id and (direct_messages.is_read = false)
 
 group by profiles.id, profiles.name; 
@@ -64,8 +64,8 @@ CREATE VIEW public.general_chat_view AS
 SELECT username, rooms.id as invite_room_id, rooms.name as invite_room_name, message, time
 
 FROM general_chat
-join profiles				on general_chat.user_id = profiles.id
-join users 					on profiles.id = users.id
+join profiles				  on general_chat.user_id = profiles.id
+join users 				   	on profiles.id = users.id
 left join rooms				on rooms.id = general_chat.general_invite_room_id
 
 order by time desc;
@@ -79,8 +79,8 @@ CREATE VIEW public.room_chat_view AS
 SELECT username, rooms.id, rooms.name, message, time
 
 FROM room_chat
-join profiles				on room_chat.user_id = profiles.id
-join users 					on profiles.id = users.id
+join profiles				  on room_chat.user_id = profiles.id
+join users 				   	on profiles.id = users.id
 left join rooms				on rooms.id = room_chat.room_id
 
 order by time desc;
