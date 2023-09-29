@@ -172,8 +172,8 @@ BEGIN
 	DELETE FROM public.room_user 		WHERE room_user.user_id = OLD.id;
 	DELETE FROM public.room_invites 	WHERE room_invites.initiator_id = OLD.id;
 	DELETE FROM public.room_invites 	WHERE room_invites.acceptor_id = OLD.id;
-	DELETE FROM public.friends			WHERE friends.initiator_id = OLD.id;
-	DELETE FROM public.friends			WHERE friends.acceptor_id = OLD.id;
+	DELETE FROM public.friends		WHERE friends.initiator_id = OLD.id;
+	DELETE FROM public.friends		WHERE friends.acceptor_id = OLD.id;
 	DELETE FROM public.room_chat 		WHERE room_chat.user_id = OLD.id;	
 	DELETE FROM public.general_chat		WHERE general_chat.user_id = OLD.id;
 	DELETE FROM public.direct_messages	WHERE direct_messages.initiator_id = OLD.id;
