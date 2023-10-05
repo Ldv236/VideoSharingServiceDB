@@ -1,11 +1,10 @@
 # VideoSharingServiceDB
-/*
-Создание БД для сервиса совместного просмотра видео в СУБД PostgreSQL;
 
-Требования к отношениям - 3 нф
-*/
+##Создание БД для сервиса совместного просмотра видео в СУБД PostgreSQL;
+##Требования к отношениям - 3 нф
 
-Представления (views):
+
+##Представления (views):
 1. представление с отображением комнат, в которых кто-то есть ( = активных), с подсчетом участников
 	select * from public.active_room_view;
 2. представление для общего чата с именами юзеров, id и названиями комнат (если есть приглашение), сообщениями
@@ -18,7 +17,7 @@
 	select * from public.users_view;
 
 
-Триггеры:
+##Триггеры:
 1. таблица users - триггер add_user - триггерная функция add_profile()
 	создаётся профиль (передаётся сгенерированный UUID, остальные поля либо по-умолчанию, либо пустые)
 2. таблица room_user - триггер user_enter_room - триггерная функция after_user_enter_room()
@@ -39,24 +38,24 @@
 	перед удалением профиля удаляет связанные записи из других таблиц (как двумя пунктами выше, альтернативная реализация ON CASCADE DELETE)
 
 
-Таблицы:
-select * from public.users;
-select * from public.profiles;
-select * from public.roles;
-select * from public.user_role;
-select * from public.rooms;
-select * from public.tags;
-select * from public.user_tag;
-select * from public.room_tag;
-select * from public.permissions;
-select * from public.friends;
-select * from public.room_user;
-select * from public.room_invites;
-select * from public.room_chat;
-select * from public.general_chat;
-select * from public.direct_messages;
-select * from public.url_history;
-стандартная таблица истории флайвей на всякий случай
+##Таблицы:
+*select * from public.users;
+*select * from public.profiles;
+*select * from public.roles;
+*select * from public.user_role;
+*select * from public.rooms;
+*select * from public.tags;
+*select * from public.user_tag;
+*select * from public.room_tag;
+*select * from public.permissions;
+*select * from public.friends;
+*select * from public.room_user;
+*select * from public.room_invites;
+*select * from public.room_chat;
+*select * from public.general_chat;
+*select * from public.direct_messages;
+*select * from public.url_history;
+*стандартная таблица истории флайвей на всякий случай
 
 ![image](https://github.com/Ldv236/VideoSharingServiceDB/assets/124390764/abb1a9c4-5418-4cf2-af97-88d2de84755b)
 
